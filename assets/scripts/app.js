@@ -16,7 +16,7 @@ class ShoppingCart {
   items = [];
 
   render() {
-    const cartEl = [];
+    const cartEl = document.createElement('section');
     cartEl.innerHTML = `
     <h2>Total: \$${0}</h2>
     <button>Order Now!</button>
@@ -95,7 +95,7 @@ class Shop {
     const productList = new ProductList();
     const prodListEl = productList.render();
 
-    renderHook.append(cart);
+    renderHook.append(cartEl);
     renderHook.append(prodListEl);
   }
 }
