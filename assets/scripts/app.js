@@ -14,12 +14,26 @@ class Product {
 
 class ShoppingCart {
   items = [];
-  totalValue = 0;
+
+  set cartItems(value) {
+    this.items = value;
+    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(
+      2
+    )}</h2>`;
+  }
+
+  get totalAmount() {
+    const sum = this.items.reduce(
+      (prevValue, curValue) => prevValue + curValue.price,
+      0
+    );
+    return sum;
+  }
 
   addProduct(product) {
-    this.items.push(product);
-    this.totalValue += product.price;
-    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalValue}</h2>`;
+    const updatedItems = [...this.items];
+    updatedItems.push(product);
+    this.cartItems = updatedItems;
   }
 
   render() {
